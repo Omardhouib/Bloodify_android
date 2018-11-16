@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++){
                             JSONObject object = jsonArray.getJSONObject(i);
                             String nom = object.getString("nom").trim();
-                            String email = object.getString("email").trim();
+                            String email = object.getString("Email").trim();
                             Toast.makeText(LoginActivity.this, "Login success. !"+nom+"mail"+email, Toast.LENGTH_SHORT).show();
 
 
