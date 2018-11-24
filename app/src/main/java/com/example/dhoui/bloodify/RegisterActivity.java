@@ -1,13 +1,20 @@
 package com.example.dhoui.bloodify;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -23,6 +30,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Calendar;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -33,12 +41,13 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText prenom;
     private EditText email ;
     private EditText tel ;
-    private EditText region ;
-    private EditText grpsanguin ;
+    private Spinner region ;
+    private Spinner grpsanguin ;
     private EditText age;
     private EditText datedonation;
     private EditText password;
-    private static String URL_REGIST = "http://192.168.1.12/register.php";
+    private static String URL_REGIST = "http://192.168.1.8/register.php";
+    private DatePickerDialog.OnDateSetListener mDateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +66,52 @@ public class RegisterActivity extends AppCompatActivity {
         inscrire_button = findViewById(R.id.inscrire_button);
         progress = findViewById(R.id.progress);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.grpsanguin,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.Regions,
+                android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        grpsanguin.setAdapter(adapter);
+        grpsanguin.getSelectedItem().toString();
+
+        region.setAdapter(adapter1);
+        region.getSelectedItem().toString();
+
+        datedonation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
 
 
+                DatePickerDialog dialog = new DatePickerDialog(
+                        RegisterActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateListener,year,month,day
+                );
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+            }
+        });
+
+        mDateListener = new DatePickerDialog.OnDateSetListener() {
+            public static final String TAG = "MainActivity";
+
+            @Override
+
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                Log.d(TAG, "onDateSet: date: " + year + "/" + month + "/" + dayOfMonth);
+                String date = dayOfMonth + "/" + month + "/" + year;
+                datedonation.setText(date);
+            }
+        };
+        
         inscrire_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,8 +131,8 @@ private void Regist() {
     final String prenom = this.prenom.getText().toString().trim();
     final String email = this.email.getText().toString().trim();
     final int tel = Integer.parseInt(this.tel.getText().toString().trim());
-    final String region = this.region.getText().toString().trim();
-    final String grpsanguin =this.grpsanguin.getText().toString().trim();
+    final String region = this.region.getSelectedItem().toString().trim();
+    final String grpsanguin =this.grpsanguin.getSelectedItem().toString().trim();
     final int age = Integer.parseInt(this.age.getText().toString().trim());
     final String datedonation = this.datedonation.getText().toString().trim();
     final String password = this.password.getText().toString().trim();

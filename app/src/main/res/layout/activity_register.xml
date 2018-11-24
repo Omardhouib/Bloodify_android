@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
 
 
     tools:context=".RegisterActivity">
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
  <android.support.design.widget.TextInputLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <EditText
-        android:id="@+id/nom_Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorText"
-        android:hint="Nom"
-        android:inputType="textPersonName" />
+
+     <EditText
+         android:id="@+id/nom_Text"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="5dp"
+         android:layout_marginTop="5dp"
+         android:layout_marginEnd="5dp"
+         android:layout_marginStart="5dp"
+         android:hint="Nom"
+         android:inputType="textPersonName"
+         android:textColor="@color/colorText" />
     ></android.support.design.widget.TextInputLayout>
 
 
@@ -35,18 +42,27 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorText"
         android:hint="Prenom"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"/>
 </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/email_Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
             android:hint="Adresse email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorText" />
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -60,6 +76,10 @@
             android:hint="Numéro de téléphone"
             android:inputType="textPersonName"
             android:textColor="@color/colorText"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -67,13 +87,19 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <EditText
+        <Spinner
             android:id="@+id/region_Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             android:hint="Région"
             android:inputType="textPersonName"
-            android:textColor="@color/colorText"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:textColor="#6d6d6d"
+            android:backgroundTint="@color/colorPrimaryDark2"
+
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -81,14 +107,19 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <EditText
+
+        <Spinner
             android:id="@+id/grpsanguin_Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/colorPrimaryDark2"
             android:hint="Groupe sanguin"
             android:inputType="textPersonName"
-            android:textColor="@color/colorText"
-            />
+            android:textColor="#6d6d6d" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -101,6 +132,10 @@
             android:hint="Âge"
             android:inputType="textPersonName"
             android:textColor="@color/colorText"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -114,6 +149,10 @@
             android:hint="Dernier date de donation"
             android:inputType="textPersonName"
             android:textColor="@color/colorText"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -129,6 +168,29 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:textColor="@color/colorText"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        >
+        <EditText
+            android:id="@+id/Cpassword_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textColor="@color/colorText"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -149,6 +211,6 @@
         android:text="S'inscrire" />
 
 
-
-
 </LinearLayout>
+
+</ScrollView>
