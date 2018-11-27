@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email_text,password_text;
     private Button Signin_button,register_button;
     private ProgressBar progress;
-    private static String URL_REGIST = "http://192.168.1.8/Login.php";
+    private static String URL_REGIST = "http://192.168.1.5/Login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                  String email = email_text.getText().toString().trim();
                  String password = password_text.getText().toString().trim();
-                Intent registerIntent = new Intent(LoginActivity.this, MainActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
+
 
 
                 if(!email.isEmpty() || !password.isEmpty()) {
@@ -98,14 +97,16 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject object = jsonArray.getJSONObject(i);
                             String nom = object.getString("nom").trim();
                             String email = object.getString("Email").trim();
-                            Toast.makeText(LoginActivity.this, "Login success. !"+nom+"mail"+email, Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(LoginActivity.this, "Login success. !"+nom+"mail"+email, Toast.LENGTH_LONG).show();
+                            Intent registerIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                            LoginActivity.this.startActivity(registerIntent);
 
                         }
 
                     }
                 } catch (JSONException e) {
                     Log.e(TAG, "onResponse: ", e);
+                    Toast.makeText(LoginActivity.this, "Try again. !", Toast.LENGTH_LONG).show();
                     progress.setVisibility(View.VISIBLE);
 
                 }
